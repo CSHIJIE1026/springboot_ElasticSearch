@@ -15,7 +15,7 @@ public class ElasticsearchConfig extends ElasticsearchProperties {
 
         String[] hosts = getClusterNodes().split(",");
         HttpHost[] httpHosts = new HttpHost[hosts.length];
-        for (int i = 0; i < httpHosts.length; i++) {
+        for (int i = 0; i < hosts.length; i++) {
             String h = hosts[i];
             httpHosts[i] = new HttpHost(h.split(":")[0], Integer.parseInt(h.split(":")[1]));
         }
