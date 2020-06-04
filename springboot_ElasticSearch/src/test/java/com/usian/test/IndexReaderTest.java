@@ -148,13 +148,14 @@ public class IndexReaderTest {
     public void testHighLightQuery() throws IOException {
         //搜索源构建对象
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        searchSourceBuilder.query (QueryBuilders.matchQuery ("name","spring"));
+        searchSourceBuilder.query (QueryBuilders.matchQuery ("name","开发"));
 
         //设置高亮
         HighlightBuilder highlightBuilder = new HighlightBuilder ();
-        highlightBuilder.preTags ("<red>");
-        highlightBuilder.postTags ("</red>");
-        highlightBuilder.fields ().add (new HighlightBuilder.Field ("name"));
+        highlightBuilder.preTags ("<font color='red'>");
+        highlightBuilder.postTags ("</font>");
+        //highlightBuilder.fields ().add (new HighlightBuilder.Field ("name"));
+        highlightBuilder.field ("name");
         searchSourceBuilder.highlighter (highlightBuilder);
 
         // 设置搜索源
